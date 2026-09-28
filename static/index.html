@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Traffic Monitoring System</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+<header>
+  <div>
+    <p class="eyebrow">AI TRAFFIC INTELLIGENCE</p>
+    <h1>Smart Traffic Monitoring System</h1>
+    <p class="sub">Real-time vehicle detection, counting and congestion analysis</p>
+  </div>
+  <div class="actions">
+    <button onclick="startDetection()">▶ Start</button>
+    <button class="secondary" onclick="stopDetection()">■ Stop</button>
+    <a class="export" href="/api/export/csv">Export CSV</a>
+  </div>
+</header>
+
+<div class="status-row"><span id="systemStatus" class="pill">Checking...</span><span id="errorStatus"></span></div>
+
+<section class="cards">
+  <div class="card"><span>Total Vehicles</span><strong id="total">0</strong></div>
+  <div class="card"><span>Cars</span><strong id="cars">0</strong></div>
+  <div class="card"><span>Motorcycles</span><strong id="motorcycles">0</strong></div>
+  <div class="card"><span>Buses</span><strong id="buses">0</strong></div>
+  <div class="card"><span>Trucks</span><strong id="trucks">0</strong></div>
+</section>
+
+<section class="grid">
+  <div class="panel">
+    <div class="panel-head"><h2>Live Traffic Camera</h2><span id="density" class="density low">LOW</span></div>
+    <div class="camera"><img id="video" src="/video_feed" alt="Traffic feed"><div id="cameraMessage">Waiting for detection...</div></div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><h2>Traffic Overview</h2></div>
+    <div class="meter"><div class="meter-label"><span>Traffic density</span><b id="densityText">LOW</b></div><div class="bar"><div id="densityBar"></div></div></div>
+    <div class="metric"><span>Congestion</span><strong id="congestion">No</strong></div>
+    <div class="metric"><span>Last update</span><strong id="updated">—</strong></div>
+  </div>
+</section>
+
+<section class="grid lower">
+  <div class="panel">
+    <div class="panel-head"><h2>Vehicle Distribution</h2></div>
+    <div class="distribution">
+      <div><span>Cars</span><b id="barCars">0</b></div>
+      <div><span>Motorcycles</span><b id="barBikes">0</b></div>
+      <div><span>Buses</span><b id="barBuses">0</b></div>
+      <div><span>Trucks</span><b id="barTrucks">0</b></div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><h2>Recent Alerts</h2></div>
+    <div id="alerts" class="alerts"><p>No alerts yet.</p></div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel-head"><h2>Traffic History</h2><button class="small" onclick="loadHistory()">Refresh</button></div>
+  <div class="table-wrap">
+    <table><thead><tr><th>Time</th><th>Total</th><th>Cars</th><th>Motorcycles</th><th>Buses</th><th>Trucks</th><th>Density</th></tr></thead>
+    <tbody id="history"></tbody></table>
+  </div>
+</section>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

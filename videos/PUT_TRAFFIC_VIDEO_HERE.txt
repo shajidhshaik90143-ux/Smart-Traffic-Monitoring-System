@@ -1,0 +1,2 @@
+Put a traffic video here, for example `traffic.mp4`.
+Then change VIDEO_SOURCE=videos/traffic.mp4 in .env.

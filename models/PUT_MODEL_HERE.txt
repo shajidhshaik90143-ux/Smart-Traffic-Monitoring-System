@@ -1,0 +1,2 @@
+The application automatically downloads the default YOLO model on first use.
+Default model: yolo11n.pt
